@@ -1,0 +1,67 @@
+@if(cartProducts.length > 0){
+
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col">Description</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">remove</th>
+        <th scope="col">price</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      @for (product of cartProducts; track product ) {
+
+      <tr>
+        <td>
+          <img [src]="product.data.images[0]" />
+        </td>
+
+        <td>
+          <h6>{{ product.data.title }} </h6>
+        </td>
+        <td>
+          <div class="add-to-cart">
+            <button
+              (click)="increAmount(product)"
+              [disabled]="product.amount === product.data.stock"
+            >
+              +
+            </button>
+
+            <span>{{ product.amount }} </span>
+            <button
+              (click)="decreAmount(product)"
+              [disabled]="product.amount === 1"
+            >
+              -
+            </button>
+          </div>
+        </td>
+        <td>
+          <button (click)="removeItem(product)" class="btn btn-danger">
+            <fa-icon [icon]="delete"></fa-icon>
+          </button>
+        </td>
+        <td>
+          <p class="price">{{ product.data.price  * product.amount }} <span>eg</span></p>
+        </td>
+      </tr>
+
+      }
+    </tbody>
+  </table>
+  <div class="totalPrcice">
+    <p>total : <span> {{totalPrice}} eg</span></p>
+  </div>
+</div>
+} @else{
+  <div class="cartContainer">
+
+    <img src="/assets/Images/cart.jpg" class="cart" />
+  </div>
+}

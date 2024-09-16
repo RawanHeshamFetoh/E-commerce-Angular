@@ -1,0 +1,18 @@
+.active{
+ color: #2D9F25 !important;
+ font-weight: bold;
+}
+.cartItems{
+  background-color: #2D9F25;
+  color: white;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+.cartItems span{
+  font-weight: 10px !important;
+}

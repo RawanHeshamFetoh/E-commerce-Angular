@@ -1,0 +1,16 @@
+<div>
+
+
+<div class="row row-cols-1 row-cols-md-2  row-cols-lg-auto row-gap-4">
+  @for (product of productsData; track product.id) {
+      <div class="col">
+      <app-card [product]="product" ></app-card>
+    </div>
+    }
+
+</div>
+<div class="btns">
+  <button (click)="prevPage()" >prev</button>
+  <button (click)="nextPage()" >next</button>
+</div>
+</div>

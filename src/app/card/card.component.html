@@ -1,0 +1,28 @@
+
+
+  <div class="card" >
+    <img [src]="product.images[0]" (click)="redirectToDetails(product.id)" class="card-img-top" alt="...">
+    <div class="card-body">
+      <span class="badge " [ngClass]="product.stock>0 ? 'bg-success' : 'bg-danger'" >
+      @if (product.stock>0) {
+        In Stock
+      }@else {
+        Out of Stock
+      }
+    </span>
+    <h5 class="card-title">{{product.title}}</h5>
+    <p class="card-text">{{product.price}} $</p>
+
+    <div class="rating-box">
+      @for (star of stars; track $index) {
+      <fa-icon [icon]="faStar" class="star" [ngClass]="{
+        'star-filled': star < rating,
+        'star-empty': star >= rating
+      }"></fa-icon>
+      }
+    </div>
+    <button class="card-btn" (click)="addToCart(product.id)" [disabled]="amount === product.stock">add to card</button>
+
+  </div>
+</div>
+

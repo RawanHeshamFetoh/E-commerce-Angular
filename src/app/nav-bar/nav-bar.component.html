@@ -1,0 +1,29 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link " routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">product app</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active">register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" routerLinkActive="active">login </a>
+        </li>
+        <li class="nav-item  position-relative ">
+          <a class="nav-link "  routerLink="/cart" routerLinkActive="active" >
+            <fa-icon [icon] = "cart" ></fa-icon>
+            <span class="position-absolute top-0 start-100 translate-middle p-2  border border-light  cartItems">
+              <span >{{cartItems}}</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

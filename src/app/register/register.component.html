@@ -1,0 +1,147 @@
+<p>register works!</p>
+<form [formGroup]="registerForm" (ngSubmit)="handleSubmitForm()">
+  <div class="mb-3">
+    <label for="name" class="form-label">Name</label>
+    <input type="text" class="form-control" id="name" formControlName="name" />
+    @if(submitted ){
+    <div id="nameError" class="form-text text-danger">
+      @if(name?.hasError('required')) {
+      <span> Required </span>
+      }
+    </div>
+    }
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">email</label>
+    <input
+      type="email"
+      class="form-control"
+      id="email"
+      formControlName="email"
+    />
+    @if(submitted ){
+    <div id="EmailError" class="form-text text-danger">
+      @if(email?.hasError('required')) {
+      <span> Required </span>
+      } @if(email?.hasError('email')) {
+      <span> Invalid Email Format </span>
+      }
+    </div>
+    }
+  </div>
+  <div class="mb-3">
+    <label for="userName" class="form-label">user Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="userName"
+      formControlName="userName"
+    />
+    @if(submitted ){
+    <div id="UserNameError" class="form-text text-danger">
+      @if(userName?.hasError('required')) {
+      <span> Required </span>
+      } @if(userName?.hasError('pattern')) {
+      <span> Invalid user name Format </span>
+      }
+    </div>
+    }
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      formControlName="password"
+    />
+    @if(submitted ){
+    <div id="PasswordError" class="form-text text-danger">
+      @if(password?.hasError('required')) {
+      <span> Required </span>
+      } @if(password?.hasError('pattern')) {
+      <span> Invalid password Format </span>
+      }
+    </div>
+    }
+  </div>
+  <div class="mb-3">
+    <label for="confirmPassword" class="form-label">confirmPassword</label>
+    <input
+      type="password"
+      class="form-control"
+      id="confirmPassword"
+      formControlName="confirmPassword"
+    />
+    @if(submitted ){
+    <div id="PasswordError" class="form-text text-danger">
+      @if(confirmPassword?.hasError('required')) {
+      <span> Required </span>
+      } @if(registerForm?.hasError('mismatch')) {
+      <span> Invalid password Format </span>
+      }
+    </div>
+    }
+  </div>
+ 
+  
+  <div formArrayName="addresses">
+    
+    <div *ngFor="let address of addresses.controls; let i = index" [formGroupName]="i">
+      <div class="mb-2">
+      <label for="address-{{i}}" class="form-label">Address:</label>
+      <input id="address-{{i}}" class="form-control" formControlName="address" type="text">
+      @if(submitted ){
+        <div id="PasswordError" class="form-text text-danger">
+          @if(this.addresses.at(i).get('address')?.hasError('required')) {
+          <span> Required </span>
+          } 
+        </div>
+        }
+    </div>
+    <div class="mb-2">
+      <label for="street-{{i}}" class="form-label">Street:</label>
+      <input id="street-{{i}}" class="form-control" formControlName="street" type="text">
+      @if(submitted ){
+        <div id="PasswordError" class="form-text text-danger">
+          @if(this.addresses.at(i).get('street')?.hasError('required')) {
+          <span> Required </span>
+          } 
+        </div>
+        }
+    </div>
+      <div class="mb-2">
+      <label for="country-{{i}}" class="form-label">Country:</label>
+      <input id="country-{{i}}" class="form-control" formControlName="country" type="text">
+      @if(submitted ){
+        <div id="PasswordError" class="form-text text-danger">
+          @if(this.addresses.at(i).get('country')?.hasError('required')) {
+          <span> Required </span>
+          } 
+        </div>
+        }
+    </div>
+      <div class="mb-2">
+        <label for="city-{{i}}" class="form-label">City:</label>
+        <input id="city-{{i}}" class="form-control" formControlName="city" type="text">
+        @if(submitted ){
+          <div id="PasswordError" class="form-text text-danger">
+            @if(this.addresses.at(i).get('city')?.hasError('required')) {
+            <span> Required </span>
+            } 
+          </div>
+          }
+      </div>
+      @if (i>0) {
+
+        <button type="button" class="btn btn-danger" (click)="removeAddress(i)">Remove Address</button>
+      }
+      <hr>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-primary" (click)="addAddress()">Add Address</button>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<p>already have accoun <a routerLink="/login">login</a></p>

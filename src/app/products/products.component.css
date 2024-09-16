@@ -1,0 +1,32 @@
+.btns{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+.btns button{
+  padding: 10px 20px;
+  margin-top: 20px;
+  border: 1px solid #2D9F25;
+  color: #2D9F25;
+  background-color: transparent;
+  text-transform: capitalize;
+  font-size: 16px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+  margin-right:20px ;
+  cursor: pointer;
+}
+.btns button:hover{
+  background-color: #2D9F25;
+  color: #fff;
+  transform: scale(.99);
+  -webkit-transform: scale(.99);
+  -moz-transform: scale(.99);
+  -ms-transform: scale(.99);
+  -o-transform: scale(.99);
+}
+

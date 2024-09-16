@@ -1,0 +1,49 @@
+<!-- {{ formValues | json }} -->
+<form #loginform="ngForm" (ngSubmit)="handleSubmitForm(loginform)">
+  <div class="mb-3">
+    <label for="name" class="form-label">User Name</label>
+    <input
+      type="email"
+      class="form-control"
+      id="name"
+      name="userName"
+      [(ngModel)]="formValues.userName"
+      required
+      pattern="^[\w\.-]+@[a-zA-Z0-9\.-]+\.[a-zA-Z]{2,}$"
+      #userControl="ngModel"
+    />
+    <!-- @if (userControl.invalid && userControl.touched ) { -->
+    @if(submitted ){
+      <div id="nameError" class="form-text text-danger">
+        @if(userControl.hasError('required')) {
+          <span> Required </span>
+        }
+        @if(userControl.hasError('pattern')) {
+          <span> Invalid Emial Format </span>
+        }
+      </div>
+    }
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="password"
+      name="password"
+      [(ngModel)]="formValues.password"
+      required
+      #passwordControl ='ngModel'
+    />
+    @if(submitted ){
+      <div id="PassswordError" class="form-text text-danger">
+        @if(passwordControl.hasError('required')) {
+          <span> Required </span>
+        }
+        
+      </div>
+    }
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <p>don't have account <a routerLink="/register"> Regsteri</a></p>
+</form>
